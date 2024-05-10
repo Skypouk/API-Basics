@@ -1,6 +1,7 @@
-fastapi
-psycopg2
-sqlalchemy
-asyncpg
-uvicorn
+fastapi==0.111.0
+psycopg2==2.9.9
+sqlalchemy==2.0.30
+uvicorn==0.29.0
+alembic==1.13.1
+ruff
 pytest
