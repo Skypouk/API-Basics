@@ -23,7 +23,7 @@ jobs:
         context: .
         file: ./Dockerfile.dev
         push: true
-        tags: skypouk/basics_api:v1.0.2
+        tags: skypouk/basics_api:v1.0.3
 
   #deploy:
   #  needs: build_and_push
