@@ -1,0 +1,55 @@
+name: Deploy to GKE
+
+on:
+  push:
+    branches:
+      - deployment_on_gke
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+        version: 'latest'
+
+    - name: Install gke-gcloud-auth-plugin
+      run: |
+        gcloud components install gke-gcloud-auth-plugin
+        gcloud components update
+
+    - name: Configure gcloud
+      run: |
+        gcloud config set project ${{ secrets.GCP_PROJECT }}
+        gcloud config set compute/zone ${{ secrets.GKE_ZONE }}
+        gcloud auth configure-docker
+
+    - name: Authenticate to GKE
+      run: |
+        gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER }}
+
+    - name: Ensure Ingress is Available
+      run: |
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+
+    - name: Wait for ingress-nginx to be ready
+      run: |
+        kubectl wait --namespace ingress-nginx \
+          --for=condition=ready pod \
+          --selector=app.kubernetes.io/component=controller \
+          --timeout=120s
+
+    - name: Deploy to GKE
+      run: |
+        kubectl apply -f k8s/

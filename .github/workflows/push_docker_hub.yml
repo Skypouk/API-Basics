@@ -23,22 +23,4 @@ jobs:
         context: .
         file: ./Dockerfile.dev
         push: true
-        tags: skypouk/basics_api:v1.0.3
-
-  #deploy:
-  #  needs: build_and_push
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #  - name: Check Out Code
-  #    uses: actions/checkout@v3
-  #
-  #  - name: Deploy to Elastic Beanstalk using EB CLI
-  #    uses: einaregilsson/beanstalk-deploy@v18
-  #    with:
-  #      aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #      aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #      region: ${{ secrets.AWS_REGION }}
-  #      application_name: "YourApplicationName"
-  #      environment_name: ${{ secrets.EB_ENV_NAME }}
-  #      version_label: ${{ github.run_number }}
-  #      use_existing_version_if_available: true
+        tags: skypouk/basics_api:v1.0.4

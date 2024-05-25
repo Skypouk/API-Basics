@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: skypouk/basics_api:v1.0.4
+          ports:
+            - containerPort: 8000 # Adjust port as needed
+          env:
+            - name: POSTGRES_DB
+              value: basic_db
+            - name: POSTGRES_USER
+              value: basic_user
+            - name: POSTGRES_PASSWORD
+              value: S3cret
+            - name: POSTGRES_HOST
+              value: postgres-cluster-ip-service
