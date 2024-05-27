@@ -19,10 +19,19 @@ spec:
             - containerPort: 8000 # Adjust port as needed
           env:
             - name: POSTGRES_DB
-              value: basic_db
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: POSTGRES_DB
             - name: POSTGRES_USER
-              value: basic_user
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: POSTGRES_USER
             - name: POSTGRES_PASSWORD
-              value: S3cret
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: POSTGRES_PASSWORD
             - name: POSTGRES_HOST
               value: postgres-cluster-ip-service

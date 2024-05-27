@@ -48,7 +48,10 @@ jobs:
         kubectl wait --namespace ingress-nginx \
           --for=condition=ready pod \
           --selector=app.kubernetes.io/component=controller \
-          --timeout=120s
+          --timeout=600s
+
+    - name: Apply Kubernetes Secrets
+      run: kubectl apply -f k8s/db-credentials-secret.yaml
 
     - name: Deploy to GKE
       run: |
