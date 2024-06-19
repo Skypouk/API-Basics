@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - deployment_on_gke
+      - ft/add_react_front
 
 jobs:
   deploy:

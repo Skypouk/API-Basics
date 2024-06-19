@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: skypouk/basics_api:v1.0.4
+          image: skypouk/basics_api:v2.0.2
           ports:
             - containerPort: 8000 # Adjust port as needed
           env:

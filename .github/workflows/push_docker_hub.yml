@@ -3,24 +3,33 @@ on:
   push:
     branches:
       - master
+      #- ft/add_react_front
 
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
-    - name: Check Out Code
-      uses: actions/checkout@v3
+      - name: Check Out Code
+        uses: actions/checkout@v3
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        file: ./Dockerfile.dev
-        push: true
-        tags: skypouk/basics_api:v1.0.4
+      - name: Build and Push API Docker Image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./api
+          file: ./api/Dockerfile.dev
+          push: true
+          tags: skypouk/basics_api:v2.0.2
+
+      #- name: Build and Push Front Docker Image
+      #  uses: docker/build-push-action@v3
+      #  with:
+      #    context: ./front
+      #    file: ./front/Dockerfile.dev
+      #    push: true
+      #    tags: skypouk/basics_front:v2.0.0
