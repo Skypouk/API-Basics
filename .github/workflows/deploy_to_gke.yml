@@ -5,6 +5,7 @@ on:
     branches:
       - deployment_on_gke
       - ft/add_react_front
+      - ft/add_auth0
 
 jobs:
   deploy:
@@ -58,7 +59,8 @@ jobs:
 
       - name: Apply Kubernetes Secrets
         run: |
-          kubectl apply -f k8s/db-credentials-secret.yaml
+          kubectl apply -f k8s/back-credentials-secret.yaml
+          kubectl apply -f k8s/front-credentials-secret.yaml
           kubectl apply -f k8s/cloudflare-api-token-secret.yaml
 
       - name: Apply cert-manager resources

@@ -14,6 +14,32 @@ spec:
     spec:
       containers:
         - name: client
-          image: skypouk/basics_front:v2.0.0
+          image: skypouk/basics_front:v4.0.1
           ports:
             - containerPort: 3000
+          env:
+            - name: REACT_APP_AUTH0_AUDIENCE
+              valueFrom:
+                secretKeyRef:
+                  name: front-credentials
+                  key: REACT_APP_AUTH0_AUDIENCE
+            - name: REACT_APP_AUTH0_DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: front-credentials
+                  key: REACT_APP_AUTH0_DOMAIN
+            - name: REACT_APP_AUTH0_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: front-credentials
+                  key: REACT_APP_AUTH0_CLIENT_ID
+            - name: REACT_APP_AUTH0_CALLBACK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: front-credentials
+                  key: REACT_APP_AUTH0_CALLBACK_URL
+            - name: REACT_APP_API_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: front-credentials
+                  key: REACT_APP_API_SERVER_URL

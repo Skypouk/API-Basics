@@ -1,12 +1,15 @@
 import React from "react";
+import main_logo from "../assets/coding.png";
 
 export const HeroBanner = () => {
-  const logo = "https://cdn.auth0.com/blog/developer-hub/react-logo.svg";
-
   return (
     <div className="hero-banner hero-banner--pink-yellow">
       <div className="hero-banner__logo">
-        <img className="hero-banner__image" src={logo} alt="React logo" />
+        <img
+          className="hero-banner__image"
+          src={main_logo}
+          alt="Skypouk logo"
+        />
       </div>
       <h1 className="hero-banner__headline">Welcome on my website project!</h1>
       <p className="hero-banner__description">

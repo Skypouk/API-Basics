@@ -1,5 +1,6 @@
 import React from "react";
 import { PageFooterHyperlink } from "./page-footer-hyperlink";
+import main_logo from "../assets/coding.png";
 
 export const PageFooter = () => {
   return (
@@ -20,12 +21,12 @@ export const PageFooter = () => {
           <div className="page-footer-brand">
             <img
               className="page-footer-brand__logo"
-              src="https://cdn.auth0.com/blog/hello-auth0/auth0-shield.svg"
-              alt="Auth0"
+              src={main_logo}
+              alt="Skypouk logo"
               width="20"
               height="22.22"
             />
-            <PageFooterHyperlink path="https://auth0.com/">
+            <PageFooterHyperlink path="https://skypouk.me/">
               Skypouk Inc
             </PageFooterHyperlink>
           </div>

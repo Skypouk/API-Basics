@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import main_logo from "assets/coding.png";
 
 export const MobileNavBarBrand = ({ handleClick }) => {
   return (
@@ -7,10 +8,8 @@ export const MobileNavBarBrand = ({ handleClick }) => {
       <NavLink to="/">
         <img
           className="mobile-nav-bar__logo"
-          src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"
-          alt="Auth0 shield logo"
-          width="82"
-          height="24"
+          src={main_logo}
+          alt="Skypouk logo"
         />
       </NavLink>
     </div>
