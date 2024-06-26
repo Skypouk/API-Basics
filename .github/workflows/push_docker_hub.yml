@@ -19,18 +19,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Push API Docker Image
-        uses: docker/build-push-action@v3
-        with:
-          context: ./api
-          file: ./api/Dockerfile.dev
-          push: true
-          tags: skypouk/basics_api:v3.0.0
-
-      #- name: Build and Push Front Docker Image
+      #- name: Build and Push API Docker Image
       #  uses: docker/build-push-action@v3
       #  with:
-      #    context: ./front
-      #    file: ./front/Dockerfile.dev
+      #    context: ./api
+      #    file: ./api/Dockerfile.dev
       #    push: true
-      #    tags: skypouk/basics_front:v2.0.0
+      #    tags: skypouk/basics_api:v3.0.0
+
+      - name: Build and Push Front Docker Image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./front
+          file: ./front/Dockerfile.dev
+          push: true
+          tags: skypouk/basics_front:v3.0.0
