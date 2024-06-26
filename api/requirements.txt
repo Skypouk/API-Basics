@@ -7,3 +7,5 @@ python-dotenv==1.0.1
 ruff
 mypy
 pytest
+PyJWT==2.8.0
+cryptography==40.0.2

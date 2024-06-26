@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - ft/add_auth0
       #- ft/add_react_front
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
           context: ./api
           file: ./api/Dockerfile.dev
           push: true
-          tags: skypouk/basics_api:v2.0.2
+          tags: skypouk/basics_api:v3.0.0
 
       #- name: Build and Push Front Docker Image
       #  uses: docker/build-push-action@v3
