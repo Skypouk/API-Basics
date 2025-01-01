@@ -2,7 +2,7 @@ name: Build and Push to Docker Hub
 on:
   push:
     branches:
-      - master
+      #- master
       #- ft/add_auth0
       #- ft/add_react_front
 
